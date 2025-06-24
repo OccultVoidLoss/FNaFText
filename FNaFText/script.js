@@ -1,12 +1,14 @@
 let hora= 0;
 let vivo = true;
 let posição = 3;
-let bateria = 4;
+let bateria = 3;
+let aconteceu = false;
     function startNight(){
-         hora = 0;
-      posição = 3;
-      vivo = true;
-      bateria = 4;
+        aconteceu = false;
+        hora = 0;
+        posição = 3;
+        vivo = true;
+        bateria = 3;
 
       window.alert("Sobreviva até as 6 da manha, cheque as cameras para saber a posição do robo,porem nem sempre as cameras dizem a verdade, caso ele chege a posição 0 voce perde, voce pode fechar a porta 3 vezes no maximo para afastá-lo, quando está na posição 1")
         document.getElementById("btnCam").disabled = false;
@@ -19,13 +21,35 @@ let bateria = 4;
     }
     function checkcamera(){
             if (!vivo) return;
+            const msgerro = [
+                " A imagem pisca antes de estabilizar...",
+                " Você acha que viu algo",
+                " Há um chiado estranho",
+                " A imagem está muito distorcida",
+                " HAHAHHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAH"
+            ];
+            let msg = msgerro[Math.floor(Math.random() * msgerro.length)];
+            passhour();
             if(Math.random()<0.8){
                   document.getElementById("ação").innerHTML ="Parece que o robô está a " + posição + " de você";
             }
             else{
-                  document.getElementById("ação").innerHTML ="Parece que o robô está a " + (posição - 1) + " de você";
+                let poserrada;
+                if(Math.random() <0.5){
+                    poserrada = posição +1;
+                    if (poserrada > 3){
+                        poserrada = 3;
+                    }
+                }
+                else{
+                    poserrada = posição -1;
+                    if (poserrada < 0){
+                        poserrada = 0;
+                    }
+                }
+                  document.getElementById("ação").innerHTML ="Parece que o robô está a " + poserrada + " de você" + msg;
+                 
             }
-            passhour();
     }
     function door(){
             if (!vivo) return;
@@ -50,7 +74,8 @@ let bateria = 4;
     }
     function passhour(){
             hora+= 0.5;
-            if(Math.random() < 0.5){
+            let chanceandar = 0.5 + (hora/ 12);
+            if(Math.random() < chanceandar){
                     posição--;
                 }
                 if (hora >= 6){
@@ -80,6 +105,24 @@ let bateria = 4;
                         }
                         document.getElementById("hora").innerHTML =  h + m + "AM";
                  }
+                if (Math.random() < 0.1 && aconteceu == false){
+                    const segredos = [
+                        "ITS ME",
+                        "You shoudn't be here",
+                        "I am still here",
+                        "All of you will pay",
+                        "Follow me",
+                        "I always come back",
+                        "You won't die, but you'll wish you could",
+                        "Hello",
+                        "Let's pull you apart",
+                        "The darkest pit of hell is open for business",
+
+                    ];
+                    const segredo = segredos[Math.floor(Math.random() * segredos.length)];
+                    window.alert(segredo);
+                    aconteceu = true;
+                }
     }
     function encerrarJogo() {
             document.getElementById("btnCam").disabled = true;
@@ -95,7 +138,9 @@ let bateria = 4;
                 "foxy.gif",
                 "freddy.gif",
                 "puppet.gif",
-                "sim.gif"
+                "sim.gif",
+                "springtrap.gif",
+                "yellowrabbit.gif"
             ];
             const escolhido = lista[Math.floor(Math.random() * lista.length)];
             jumpscare.src = "jumpscares/" + escolhido
