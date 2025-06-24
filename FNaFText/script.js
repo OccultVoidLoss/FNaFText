@@ -17,7 +17,7 @@ let bateria = 4;
         msc.play();  
         document.getElementById("bateria").innerHTML = "Bateria: " + bateria;
     }
-     function checkcamera(){
+    function checkcamera(){
             if (!vivo) return;
             if(Math.random()<0.8){
                   document.getElementById("ação").innerHTML ="Parece que o robô está a " + posição + " de você";
@@ -26,8 +26,8 @@ let bateria = 4;
                   document.getElementById("ação").innerHTML ="Parece que o robô está a " + (posição - 1) + " de você";
             }
             passhour();
-        }
-        function door(){
+    }
+    function door(){
             if (!vivo) return;
             if(bateria > 0){
 
@@ -47,8 +47,8 @@ let bateria = 4;
             }
             document.getElementById("bateria").innerHTML = "Bateria: " + bateria;
             passhour();
-        }
-        function passhour(){
+    }
+    function passhour(){
             hora+= 0.5;
             if(Math.random() < 0.5){
                     posição--;
@@ -80,13 +80,13 @@ let bateria = 4;
                         }
                         document.getElementById("hora").innerHTML =  h + m + "AM";
                  }
-        }
-        function encerrarJogo() {
+    }
+    function encerrarJogo() {
             document.getElementById("btnCam").disabled = true;
             document.getElementById("btnDoor").disabled = true;
             document.getElementById("startBtn").disabled = false; 
-        }
-        function jumpscare(){
+    }
+    function jumpscare(){
             const jumpscareContainer = document.getElementById("jumpscare"); 
             const jumpscare = document.getElementById("jumpscare-img"); 
             const audio = document.getElementById("sound");
@@ -109,9 +109,9 @@ let bateria = 4;
             audio.pause();
             audio.currentTime = 0;
             }, 1500);
-        }
-        function boop(){
+    }
+    function boop(){
             const boop = document.getElementById("boop");
             boop.play();
-        }
+    }
     
