@@ -1,32 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FNaF: Text Survival</title>
-    <link rel="stylesheet" href="estilo.css">
-</head>
-<body >
+    <link rel="stylesheet" href="estilo.css" />
+  </head>
+  <body>
     <h1>FNaF: Text Survival</h1>
-    <button id="startBtn"onclick="startNight()">Começar</button>
-    <p>O que quer fazer?</p>
-    <p id="hora"></p>
-    <button id="btnCam" onclick="checkcamera()" disabled>Checar camera</button>
-    <button id="btnDoor" onclick="door()" disabled>Fechar a porta</button>
-    <button id="boopbtn" onclick="boop()">APERTAR O NARIZ DO FREDDY</button>
-    <h3 id="ação"></h3>
-    <p id="bateria">Bateria: 3</p>
-    <div id="jumpscare">
-        <img id="jumpscare-img" alt="jumpscare">
-        <audio id="sound" src="fnaf2.mp3" preload="auto"></audio>
-        <audio id="win" src="win.mp3" preload="auto"></audio>
-        <audio id="ost" src="ost.mp3" preload="auto"></audio>
-        <audio id="boop" src="boop.mp3" preload="auto"></audio>
+    <div id="loja">
+      <div>
+        <img src="fundos/fnaf1.jpg" class="backgrounds-equip" /><br />
+        <button id="btnFnaf1" onclick="equip('fnaf1')">Equipar</button>
+      </div>
+      <div>
+        <img src="fundos/fnaf2.jpg" class="backgrounds-equip" /><br />
+        <button id="btnucn" onclick="equip('fnaf2')">Equipar</button>
+      </div>
+      <div>
+        <img src="fundos/fnaf3.jpg" class="backgrounds-equip" /><br />
+        <button id="btnFnaf3" onclick="equip('fnaf3')">Equipar</button>
+      </div>
+      <div>
+        <img src="fundos/fnaf4.jpg" class="backgrounds-equip" /><br />
+        <button id="btnucn" onclick="equip('fnaf4')">Equipar</button>
+      </div>
+      <div>
+        <img src="fundos/fnaf5.jpg" class="backgrounds-equip" /><br />
+        <button id="btnucn" onclick="equip('fnaf5')">Equipar</button>
+      </div>
+      <div>
+        <img src="fundos/ucn_office.jpg" class="backgrounds-equip" /><br />
+        <button id="btnucn" onclick="equip('ucn')">Equipar</button>
+      </div>
     </div>
 
+    <button id="startBtn" onclick="startNight()">Começar</button>
+    <div id="jogo" style="display: none">
+      <p>O que quer fazer?</p>
+      <p id="hora"></p>
+      <div id="button-container">
+        <button id="btnCam" onclick="checkcamera()" disabled>
+          Checar camera
+        </button>
+        <button id="btnDoor" onclick="door()" disabled>Fechar a porta</button>
+        <button id="boopbtn" onclick="boop()">APERTAR O NARIZ DO FREDDY</button>
+      </div>
+      <h3 id="ação"></h3>
+      <p id="bateria">Bateria: 3</p>
+    </div>
+    <button id="btnloja" onclick="store()" disabled>voltar para loja</button>
+    <div id="jumpscare">
+      <img id="jumpscare-img" alt="jumpscare" />
+      <audio id="sound" src="sounds/fnaf2.mp3" preload="auto"></audio>
+      <audio id="harhar" src="sounds/harharhar.mp3" preload="auto"></audio>
+      <audio id="win" src="sounds/win.mp3" preload="auto"></audio>
+      <audio id="ost" src="sounds/ost.mp3" preload="auto" loop></audio>
+      <audio id="boop" src="sounds/boop.mp3" preload="auto"></audio>
+    </div>
 
-  <script src="script.js">
-   
-  </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
