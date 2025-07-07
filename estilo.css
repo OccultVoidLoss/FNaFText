@@ -1,44 +1,61 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('fundos/fnaf1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #eee;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  min-height: 100vh;
+}
 
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('fundo.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: #eee;
-    text-align: center;
-    padding: 20px;
-  }
-  h1 {
-    color: #eb2020;
-    text-shadow: 0 0 10px #d63031;
-    font-family: 'fonte';
-  }
-  button {
-    background-color: #a00dc7;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  button:hover:enabled {
-    background-color:#470000;
-  }
-  button:disabled {
-    background-color: #555;
-    cursor: not-allowed;
-  }
-  #ação {
-    font-weight: bold;
-    margin-top: 20px;
-    min-height: 40px;
-  }
-  #bateria, #hora {
-    margin-top: 10px;
-    font-size: 18px;
-  }
+h1 {
+  color: #eb2020;
+  text-shadow: 0 0 10px #d63031;
+  font-family: 'fonte';
+  margin-bottom: 20px;
+}
+
+#jogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  background-color: #a00dc7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover:enabled {
+  background-color: #470000;
+}
+
+button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+#ação {
+  font-weight: bold;
+  margin-top: 10px;
+  min-height: 40px;
+}
+
+#bateria, #hora {
+  margin-top: 5px;
+  font-size: 18px;
+}
+
 #jumpscare {
   position: fixed;
   top: 0;
@@ -49,18 +66,110 @@
   display: none;
   align-items: center;
   justify-content: center;
-
+  z-index: 9999;
 }
 
 #jumpscare img {
   max-height: 80%;
 }
+
 @font-face {
   font-family: 'fonte';
   src: url('fonte.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
-#boopbtn{
-  margin-top: 400px;
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#boopbtn {
+  margin-top: 0;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap; /* evita quebrar linha */
+  margin-top: 10px;
+}
+
+button {
+  background-color: #a00dc7;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+  min-width: 140px;
+}
+
+button:hover:enabled {
+  background-color: #470000;
+}
+
+button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  margin-top: 50px; /* Aumentado para descer os botões */
+}
+#jogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px; /* Isso desce tudo dentro do #jogo */
+}
+#loja {
+  display: flex;
+  justify-content: center;  /* Centraliza horizontalmente */
+  gap: 10px;                /* Espaço entre os botões */
+  margin-top: 50px;
+}
+
+#loja {
+  display: flex;
+  flex-wrap: wrap; /* permite quebrar em múltiplas linhas */
+  justify-content: center; /* centraliza horizontalmente */
+  gap: 20px; /* espaço entre os itens */
+  margin-top: 50px;
+  max-width: 1080px; /* opcional, para controlar o tamanho máximo da loja */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#loja > div {
+  /* Cria um bloco para cada imagem + botão */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: calc(50% - 20px); /* cada bloco ocupa metade do container menos o gap */
+  box-sizing: border-box;
+}
+
+.backgrounds-equip {
+  width: 100%; /* ocupa a largura do bloco pai */
+  height: auto; /* mantém proporção */
+  max-width: 200px; /* mantém o tamanho máximo */
+  border-radius: 6px;
+}
+
+/* Ajusta os botões para ficarem abaixo da imagem, alinhados ao centro */
+#loja button {
+  margin-top: 8px;
+  width: 150px;
+  white-space: nowrap;
 }
