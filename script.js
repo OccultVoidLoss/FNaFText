@@ -3,14 +3,18 @@ let vivo = true;
 let posição = 3;
 let bateria = 3;
 let aconteceu = false;
+let fundoatual = "fundos/fnaf1.jpg";
     function startNight(){
-        document.body.style.backgroundImage = "url('fundo.jpg')";
+        document.body.style.backgroundImage = "url('" + fundoatual + "')";
         document.body.style.backgroundColor = "";
+        document.getElementById("loja").style.display = 'none';
+        document.getElementById("jogo").style.display = 'flex';
         aconteceu = false;
         hora = 0;
         posição = 3;
         vivo = true;
         bateria = 3;
+        document.getElementById("btnloja").disabled = false;
 
       window.alert("Sobreviva até as 6 da manhã!\n" +
   "Use as câmeras para verificar a posição do robô, mas cuidado: elas nem sempre mostram a verdade.\n" +
@@ -96,8 +100,12 @@ let aconteceu = false;
                         document.getElementById("hora").innerHTML = "Você perdeu";
                         vivo = false;
                         encerrarJogo();
+                        let c=0;
+                        while (c == 0){
                         document.body.style.backgroundImage = "none";
                         document.body.style.backgroundColor = "black";
+                        c++;
+                        }
                         jumpscare();  
                         return;
                 }
@@ -134,12 +142,13 @@ let aconteceu = false;
     function encerrarJogo() {
             document.getElementById("btnCam").disabled = true;
             document.getElementById("btnDoor").disabled = true;
-            document.getElementById("startBtn").disabled = false; 
+            document.getElementById("startBtn").disabled = false;
+            document.getElementById("ação").innerHTML = ""; 
     }
     function jumpscare(){
             const jumpscareContainer = document.getElementById("jumpscare"); 
-            const jumpscare = document.getElementById("jumpscare-img"); 
-            const audio = document.getElementById("sound");
+            const jumpscare = document.getElementById("jumpscare-img");
+            let audio;
             const lista = [
                 "bonnie.gif",
                 "foxy.gif",
@@ -148,19 +157,64 @@ let aconteceu = false;
                 "sim.gif"
             ];
             const escolhido = lista[Math.floor(Math.random() * lista.length)];
-            jumpscare.src = "jumpscares/" + escolhido
+            if (escolhido == "sim.gif"){
+                audio = document.getElementById("harhar");
+            }
+            else {
+                audio = document.getElementById("sound");
+            }
+            jumpscare.src = "jumpscares/" + escolhido;
             const msc = document.getElementById("ost");
             msc.pause();
             jumpscareContainer.style.display = "flex";
             audio.play();
-
+            if (escolhido=="sim.gif"){
             setTimeout(() => {
-            jumpscareContainer.style.display = 'none';
-            audio.pause();
-            audio.currentTime = 0;
-            }, 1500);
-    }
+                jumpscareContainer.style.display = 'none';
+                audio.pause();
+                audio.currentTime = 0;
+                }, 29000);
+            }
+            else {
+                setTimeout(() => {
+                jumpscareContainer.style.display = 'none';
+                audio.pause();
+                audio.currentTime = 0;
+                }, 1500);
+            }
+        }
+    
     function boop(){
             const boop = document.getElementById("boop");
             boop.play();
+    }
+    function equip(fundoescolhido){
+        if (fundoescolhido == "fnaf1"){
+            fundoatual = "fundos/fnaf1.jpg";
+        }
+        else if (fundoescolhido == "ucn") {
+            fundoatual = "fundos/ucn_office.jpg";
+        }
+        else if (fundoescolhido == "fnaf3"){
+            fundoatual = "fundos/fnaf3.jpg"
+        }
+        else if(fundoescolhido == "fnaf2"){
+            fundoatual = "fundos/fnaf2.jpg"
+        }
+        else if(fundoescolhido == "fnaf4"){
+            fundoatual = "fundos/fnaf4.jpg"
+        }
+        else if(fundoescolhido == "fnaf5"){
+            fundoatual = "fundos/fnaf5.jpg"
+        }
+        document.body.style.backgroundImage = "url('" + fundoatual + "')";
+    }
+    function store(){
+        document.getElementById("jogo").style.display = 'none';
+        document.getElementById("loja").style.display = 'flex';
+        document.getElementById("btnCam").disabled = true;
+        document.getElementById("btnDoor").disabled = true;
+        document.getElementById("startBtn").disabled = false;
+        document.getElementById("ação").innerHTML = ""; 
+        document.getElementById("btnloja").disabled = true;
     }
